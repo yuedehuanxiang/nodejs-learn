@@ -1,21 +1,17 @@
+const { exec } = require("../db/mysql");
+
 const getList = (author, keyword) => {
-  // 先返回假数据 （格式是正确的）
-  return [
-    {
-      id: 1,
-      title: "标题a",
-      content: "内容a",
-      createTime: 1556786941595,
-      author: "zhangsan"
-    },
-    {
-      id: 2,
-      title: "标题b",
-      content: "内容b",
-      createTime: 1556786941000,
-      author: "lisi"
-    }
-  ];
+  let sql = `SELECT * FROM blogs WHERE 1=1 `;
+  if (author) {
+    sql += `and author='${author}' `;
+  }
+  if (keyword) {
+    sql += `and title like '%${keyword}%' `;
+  }
+  sql += `ORDER BY createtime DESC`;
+  // 返回 promise
+
+  return exec(sql);
 };
 
 const getDetail = id => {
