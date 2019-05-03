@@ -6,3 +6,5 @@ cookie概念
 4. 每次发送http请求，会将请求域的cookie一起发送给server
 5. server 可以修改 cookie 并返回给浏览器
 6. 浏览器中也可以通过js修改cookie（有限制）
+
+Set-Cookie: username=zhangsan; path=/; httpOnly; expires=Sat, 04 May 2019 10:07:21 GMT
