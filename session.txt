@@ -1,0 +1,4 @@
+用 cookie 做验证用户的隐私信息比如username会暴露出来，不安全
+如何解决：cookie 中存储 userid（可能是个随机加密的字符串没什么语意的东西）， server 端对应 username
+session, 即 server 端存储用户信息
+
