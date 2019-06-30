@@ -21,15 +21,18 @@ const server = http.createServer((req, res) => {
 
   // 返回
   if (method === "GET") {
-    // 返回的一定是字符串，然后 content-type 规定的是字符串的 类型是json
+    // 返回的一定是字符串(或者二进制数据)，然后 content-type 规定的是字符串的 类型是json
     res.end(JSON.stringify(resData));
   }
   if (method === "POST") {
     let postData = "";
     req.on("data", chunk => {
+      console.log(chunk);
       postData += chunk.toString();
     });
     req.on("end", () => {
+      console.log(postData);
+      console.log(typeof postData);
       resData.postData = postData;
       res.end(JSON.stringify(resData));
     });

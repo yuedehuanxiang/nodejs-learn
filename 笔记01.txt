@@ -1,0 +1,12 @@
+服务端返回的数据内容一定是字符串形式的（特殊情况也有返回二进制数据的），但是可以通过 返回头 content-type 来定义返回内容的类型是json呢，还是纯文本
+还是 html 等等
+
+这是post 请求中的一段代码 打印chunk 发现是buffer 形式的数据  
+<Buffer 7b 0a 09 22 6e 61 6d 65 22 3a 22 63 73 22 0a 7d>
+req.on("data", chunk => {
+      console.log(chunk);
+      postData += chunk.toString(); // toString 将buffer 数据转换成 字符串对象的形式
+    });
+
+通过 cross-env 来设置环境变量 在代码中取值的时候用 process.env.NODE_ENV 
+"dev": "cross-env NODE_ENV=dev nodemon ./bin/www"
